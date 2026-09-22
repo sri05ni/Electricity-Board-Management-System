@@ -98,7 +98,7 @@ def uploaddata(request):
 class ConnectionListView(ListView):
      model=Connection
      context_object_name='connection'
-     paginate_by=100
+    #  paginate_by=100
 
      def get_queryset(self):
         print("Fetching queryset...")
@@ -163,7 +163,7 @@ class ConnectionListView(ListView):
 
         # Paginate the serialized data
         page_number = self.request.GET.get('page', 1)
-        paginator = Paginator(serialized_data, self.paginate_by)
+        paginator = Paginator(serialized_data, 100)
         
         try:
             page_obj = paginator.page(page_number)
@@ -178,7 +178,7 @@ class ConnectionListView(ListView):
         response_data = {
             'data': page_obj.object_list,
             'search_query': context['search_query'],
-            'total_pages': 1200/100,
+            'total_pages': paginator.num_pages,            
             'current_page': page_obj.number,
         }
 
