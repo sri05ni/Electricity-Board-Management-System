@@ -104,9 +104,7 @@ class ConnectionListView(ListView):
         print("Fetching queryset...")
         # queryset = super().get_queryset()
         #queryset has all rows of connection model
-           queryset = super().get_queryset().select_related(
-    'Applicant', 'Status'
-).order_by('id')
+        queryset = super().get_queryset().select_related('Applicant', 'Status').order_by('id')
 
         # Retrieve search query from the request
         search_query = self.request.GET.get('search')
