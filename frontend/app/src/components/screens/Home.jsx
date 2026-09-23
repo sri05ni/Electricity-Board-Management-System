@@ -21,7 +21,7 @@ function Home() {
 
   const fetchData=async()=>{
     try {
-      let url = `/api/getApplicantsData/?page=${currentPage}`;
+      let url = `${process.env.REACT_APP_API_URL}/api/getApplicantsData/?page=${currentPage}`;
       if(startDate && endDate){
         // console.log(startDate)
         // console.log(startDate.toISOString().split("T")[0])
