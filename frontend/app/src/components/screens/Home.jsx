@@ -12,6 +12,7 @@ function Home() {
    const [startDate, setStartDate] = useState(null);
    const [endDate, setEndDate] = useState(null);
    const [searchQuery, setSearchQuery] = useState("");
+  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(()=>{
     console.log(searchQuery)
