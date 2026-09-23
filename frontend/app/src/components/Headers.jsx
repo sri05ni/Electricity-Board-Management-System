@@ -12,7 +12,7 @@ function Headers() {
 
     const handleLogout = async () => {
         try {
-            await axios.post("/api/logout/");
+            await axios.post( `${process.env.REACT_APP_API_URL}/api/logout/`);
 
             localStorage.removeItem("userData");
 
