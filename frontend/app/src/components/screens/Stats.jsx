@@ -4,7 +4,7 @@ import Chart from "chart.js/auto";
 
 function Stats() {
   const [selectedStatus, setSelectedStatus] = useState("");
-  const [chartData, setChartData] = useState({
+  const [, setChartData] = useState({
     labels: [],
     total_requests: [],
   });
@@ -13,7 +13,7 @@ function Stats() {
   const chartRef = useRef(null);
   const canvasRef2 = useRef(null);
   const chartRef2 = useRef(null);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchData(selectedStatus);
   }, [selectedStatus]);
