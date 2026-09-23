@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home from './components/screens/Home'
 import Headers from './components/Headers'
 import EditApplicant from './components/screens/EditApplicant'
