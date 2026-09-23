@@ -11,7 +11,7 @@ function LoginScreen() {
     e.preventDefault();
     // Add your login logic here, such as sending a request to your backend server
     try {
-        const response = await axios.post("/api/login/", {
+        const response = await axios.post( "https://electricity-board-system-backend.vercel.app/api/login/", {
           username,
           password,
         });
