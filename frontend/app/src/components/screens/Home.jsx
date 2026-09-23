@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Button, ButtonGroup } from "react-bootstrap";
+import { Row, Col} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import "./Home.css";
-import { setWeek } from 'date-fns';
+
 function Home() {
   const [data, setData] = useState([]);
    const [totalPages, setTotalPages] = useState(1);
@@ -12,6 +12,7 @@ function Home() {
    const [startDate, setStartDate] = useState(null);
    const [endDate, setEndDate] = useState(null);
    const [searchQuery, setSearchQuery] = useState("");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(()=>{
     console.log(searchQuery)
     fetchData()
