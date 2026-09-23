@@ -26,7 +26,7 @@ function Headers() {
     <>
       <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div className="container-fluid">
-          <LinkContainer to="/">
+          <LinkContainer to="/home">
             <Link className="navbar-brand">Electricity Board</Link>
           </LinkContainer>
           <button
@@ -43,7 +43,7 @@ function Headers() {
           <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <LinkContainer to="/">
+                <LinkContainer to="/home">
             <Link className="nav-link active">Home</Link>
           </LinkContainer>
               </li>
