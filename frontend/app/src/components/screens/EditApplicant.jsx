@@ -12,7 +12,7 @@ function EditApplicant() {
     
      const fetchApplicantData = async () => {
     try {
-      const response = await fetch(`/api/update_applicant/${id}`);
+      const response = await fetch( `${process.env.REACT_APP_API_URL}/api/update_applicant/${id}`);
       const data = await response.json();
       setApplicantData(data.applicant);
       setConnectionData(data.connection);
@@ -46,7 +46,7 @@ function EditApplicant() {
         },3000);
         return;
       }
-      await fetch(`/api/update_applicant/${id}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/update_applicant/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function EditApplicant() {
             <div className="row">
               <div className="col-md-3">
                 {" "}
-                <Link to="/" className="btn btn-dark my-1">
+                <Link to="/home" className="btn btn-dark my-1">
                   Go Back
                 </Link>
               </div>
