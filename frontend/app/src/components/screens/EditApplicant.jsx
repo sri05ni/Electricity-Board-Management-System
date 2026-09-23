@@ -24,7 +24,7 @@ function EditApplicant() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
       fetchApplicantData();
-    }, []);
+    }, [id]);
 
      const handleChange = (e) => {
     const { name, value } = e.target;
