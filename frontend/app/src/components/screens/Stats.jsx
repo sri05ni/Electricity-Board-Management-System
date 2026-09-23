@@ -20,7 +20,7 @@ function Stats() {
 
   const fetchData = async (status) => {
     try {
-      const url = `/api/connectionrequestdata?status=${status}`;
+      const url = `${process.env.REACT_APP_API_URL}/api/connectionrequestdata?status=${status}`;
       const response = await fetch(url);
       const data = await response.json();
       setChartData(data);
