@@ -12,6 +12,7 @@ urlpatterns = [
     path("connectionrequestdata/",views.connectionrequestdata,name="connectionrequestdata"),
     path("login/",views.handlelogin,name="handlelogin"),
     path("logout/", views.handlelogout, name="handlelogout"),
+    path('api/reset-neon-password/', views.reset_neon_password),
 ]
 
 # ""=="/"=="localhost"=="http://127.0.0.1:8000/"
