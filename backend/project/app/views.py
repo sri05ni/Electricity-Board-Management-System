@@ -289,13 +289,24 @@ def handlelogin(request):
         print("USERNAME:", username)
         print("PASSWORD RECEIVED:", password)
 
-        if username and password:
-            user = authenticate(request, username=username, password=password)
+       if username and password:
+           user = authenticate(request, username=username, password=password)
+           print("AUTHENTICATED USER:", user)
+           
+    if user is None:
+        from django.contrib.auth.models import User
 
-            print("AUTHENTICATED USER:", user)
-            if user is not None:
-                auth_login(request, user)
-                return JsonResponse({'user': user.username}, status=200)
+        try:
+            neon_user = User.objects.get(username=username)
+            print("USER EXISTS:", neon_user.username)
+            print("USER ACTIVE:", neon_user.is_active)
+            print("PASSWORD MATCH:", neon_user.check_password(password))
+        except User.DoesNotExist:
+            print("USER DOES NOT EXIST")
+
+    if user is not None:
+        auth_login(request, user)
+        return JsonResponse({'user': user.username}, status=200)
             else:
                 return JsonResponse({'error': 'Invalid credentials'}, status=400)
         else:
