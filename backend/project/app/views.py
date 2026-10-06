@@ -338,7 +338,7 @@ def handlelogout(request):
 
 @csrf_exempt
 def reset_neon_password(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         from django.contrib.auth.models import User
 
         user = User.objects.get(username='Guvi')
