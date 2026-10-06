@@ -332,3 +332,23 @@ def handlelogout(request):
         return JsonResponse({'message': 'Logout successful'}, status=200)
 
     return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+
+
+
+@csrf_exempt
+def reset_neon_password(request):
+    if request.method == 'POST':
+        from django.contrib.auth.models import User
+
+        user = User.objects.get(username='Guvi')
+        user.set_password('Guvi@1234')
+        user.save()
+
+        return JsonResponse({
+            'message': 'Password updated successfully'
+        })
+
+    return JsonResponse({
+        'error': 'Method not allowed'
+    }, status=405)
