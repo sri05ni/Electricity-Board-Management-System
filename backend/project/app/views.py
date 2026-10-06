@@ -283,38 +283,47 @@ def connectionrequestdata(request):
 def handlelogin(request):
     if request.method == 'POST':
         data = json.loads(request.body)
+
         print("DATA RECEIVED:", data)
+
         username = data.get('username')
         password = data.get('password')
+
         print("USERNAME:", username)
-        print("PASSWORD RECEIVED:", password)
 
-       if username and password:
-           user = authenticate(request, username=username, password=password)
-           print("AUTHENTICATED USER:", user)
-           
-    if user is None:
-        from django.contrib.auth.models import User
+        if username and password:
+            user = authenticate(request, username=username, password=password)
 
-        try:
-            neon_user = User.objects.get(username=username)
-            print("USER EXISTS:", neon_user.username)
-            print("USER ACTIVE:", neon_user.is_active)
-            print("PASSWORD MATCH:", neon_user.check_password(password))
-        except User.DoesNotExist:
-            print("USER DOES NOT EXIST")
+            print("AUTHENTICATED USER:", user)
 
-    if user is not None:
-        auth_login(request, user)
-        return JsonResponse({'user': user.username}, status=200)
+            if user is None:
+                from django.contrib.auth.models import User
+
+                try:
+                    neon_user = User.objects.get(username=username)
+                    print("USER EXISTS:", neon_user.username)
+                    print("USER ACTIVE:", neon_user.is_active)
+                    print("PASSWORD MATCH:", neon_user.check_password(password))
+                except User.DoesNotExist:
+                    print("USER DOES NOT EXIST")
+
+            if user is not None:
+                auth_login(request, user)
+                return JsonResponse({'user': user.username}, status=200)
             else:
                 return JsonResponse({'error': 'Invalid credentials'}, status=400)
+
         else:
-            return JsonResponse({'error': 'Username and password are required'}, status=400)
+            return JsonResponse(
+                {'error': 'Username and password are required'},
+                status=400
+            )
+
     else:
-        return JsonResponse({'error': 'Method not allowed'}, status=405)
-
-
+        return JsonResponse(
+            {'error': 'Method not allowed'},
+            status=405
+        )
 
 @csrf_exempt
 def handlelogout(request):
